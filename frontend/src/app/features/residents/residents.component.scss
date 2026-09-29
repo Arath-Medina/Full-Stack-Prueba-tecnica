@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+}
+
+.total {
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.total strong {
+  font-size: 22px;
+}
+
+mat-form-field {
+  min-width: 280px;
+}

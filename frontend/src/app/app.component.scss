@@ -1,0 +1,43 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid #e6eaf0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.active {
+  background: #eef4ff;
+}
+
+nav {
+  display: flex;
+  gap: 4px;
+}
+
+@media (max-width: 800px) {
+  .topbar {
+    height: auto;
+    min-height: 64px;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+  }
+  nav {
+    width: 100%;
+    overflow: auto;
+  }
+  .brand {
+    padding: 6px 0;
+  }
+}

@@ -1,0 +1,62 @@
+<section class="page">
+
+  <div class="page-header">
+    <div>
+      <h1>Control de accesos</h1>
+      <p class="muted">Registro de entradas y salidas del estacionamiento.</p>
+    </div>
+  </div>
+
+  <div class="card access">
+    <mat-form-field>
+      <mat-label> Placa del vehículo </mat-label>
+      <input matInput [formControl]="placa" maxlength="10" autocomplete="off" (keyup.enter)="registrarEntrada()" />
+      <mat-icon matSuffix> directions_car </mat-icon>
+    </mat-form-field>
+    <div class="actions">
+      <button mat-flat-button (click)="registrarEntrada()" [disabled]="placa.invalid || loading">
+        <mat-icon> login </mat-icon>
+        Registrar entrada
+      </button>
+      <button mat-stroked-button (click)="registrarSalida()" [disabled]="placa.invalid || loading">
+        <mat-icon> logout </mat-icon>
+        Registrar salida
+      </button>
+    </div>
+  </div>
+
+  <div class="card result" *ngIf="last">
+    <h2>Última operación</h2>
+    <div>
+      <span class="muted"> Placa </span>
+      <b>
+        {{ last.placa }}
+      </b>
+    </div>
+    <div>
+      <span class="muted"> Entrada </span>
+      <b>
+        {{ last.fechaHoraEntrada | date: 'short' }}
+      </b>
+    </div>
+    <div *ngIf="last.fechaHoraSalida">
+      <span class="muted"> Salida </span>
+      <b>
+        {{ last.fechaHoraSalida | date: 'short' }}
+      </b>
+    </div>
+    <div *ngIf="last.minutos !== null">
+      <span class="muted"> Minutos </span>
+      <b>
+        {{ last.minutos }}
+      </b>
+    </div>
+    <div *ngIf="last.montoPagar !== null">
+      <span class="muted"> Monto a pagar </span>
+      <b>
+        {{ last.montoPagar | currency: 'MXN' }}
+      </b>
+    </div>
+  </div>
+
+</section>

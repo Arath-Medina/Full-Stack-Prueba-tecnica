@@ -1,0 +1,62 @@
+<section class="page">
+
+  <div class="page-header">
+    <div>
+      <h1>Configuración</h1>
+      <p class="muted">Tipos de vehículo y cierre mensual.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h2>Nuevo tipo de vehículo</h2>
+
+      <form [formGroup]="form" (ngSubmit)="crearTipoVehiculo()" class="form-grid">
+        <mat-form-field>
+          <mat-label> Nombre </mat-label>
+          <input matInput formControlName="nombre" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label> Tarifa por minuto </mat-label>
+          <input matInput type="number" min="0" step="0.01" formControlName="tarifa" />
+        </mat-form-field>
+        <div class="full">
+          <button mat-flat-button [disabled]="form.invalid">
+            <mat-icon> add </mat-icon>
+            Crear tipo
+          </button>
+        </div>
+      </form>
+
+      <table mat-table [dataSource]="tipos">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Tipo</th>
+          <td mat-cell *matCellDef="let t">
+            {{ t.nombre }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="tarifa">
+          <th mat-header-cell *matHeaderCellDef>Tarifa</th>
+          <td mat-cell *matCellDef="let t">{{ t.tarifaPorMinuto | currency: 'MXN' }}/min</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['nombre', 'tarifa']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['nombre', 'tarifa']"></tr>
+      </table>
+
+    </div>
+
+    <div class="card danger-zone">
+      <mat-icon> calendar_month </mat-icon>
+      <h2>Reiniciar mes</h2>
+      <p class="muted">
+        Elimina las estancias completadas y reinicia el tiempo acumulado de residentes. Las
+        estancias activas se conservan.
+      </p>
+      <button mat-stroked-button (click)="reiniciarEstancias()" class="danger">
+        <mat-icon> restart_alt </mat-icon>
+        Reiniciar mes
+      </button>
+    </div>
+
+  </div>
+</section>

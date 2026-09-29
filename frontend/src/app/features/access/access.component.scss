@@ -1,0 +1,25 @@
+.access {
+  max-width: 700px;
+}
+
+.access mat-form-field {
+  width: 100%;
+}
+
+.result {
+  margin-top: 18px;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.result h2 {
+  width: 100%;
+  margin: 0;
+}
+
+.result div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

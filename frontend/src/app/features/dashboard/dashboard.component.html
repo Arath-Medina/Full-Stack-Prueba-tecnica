@@ -1,0 +1,61 @@
+<section class="page">
+
+  <div class="page-header">
+    <div>
+      <h1>Panel de estacionamiento</h1>
+      <p class="muted">Control de vehículos, accesos y pagos.</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="card">
+      <span class="muted"> Vehículos </span>
+      <strong>
+        {{ vehicles }}
+      </strong>
+    </div>
+    <div class="card">
+      <span class="muted"> Residentes </span>
+      <strong>
+        {{ residents }}
+      </strong>
+    </div>
+    <div class="card">
+      <span class="muted"> Tipos de Vehiculos </span>
+      <strong>
+        {{ types }}
+      </strong>
+    </div>
+    <div class="card">
+      <span class="muted"> Cobro Total Residentes </span>
+      <strong>
+        {{ total | currency: 'MXN' }}
+      </strong>
+    </div>
+  </div>
+
+  <div class="grid grid-2 shortcuts">
+    <a class="card" routerLink="/vehiculos">
+      <mat-icon> directions_car </mat-icon>
+      <div>
+        <b> Administrar vehículos </b>
+        <p class="muted">Consulta y registra vehículos.</p>
+      </div>
+    </a>
+    <a class="card" routerLink="/residentes">
+      <mat-icon> receipt_long </mat-icon>
+      <div>
+        <b> Reporte de residentes </b>
+        <p class="muted">Consulta minutos y pagos acumulados.</p>
+      </div>
+    </a>
+    <a class="card" routerLink="/accesos">
+      <mat-icon> swap_horiz </mat-icon>
+      <div>
+        <b> Registrar accesos </b>
+        <p class="muted">Registra entradas y salidas de vehículos.</p>
+      </div>
+    </a>
+  </div>
+
+</section>

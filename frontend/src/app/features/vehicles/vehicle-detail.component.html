@@ -1,0 +1,68 @@
+<section class="page">
+
+  <a mat-button routerLink="/vehiculos">
+    <mat-icon> arrow_back </mat-icon>
+    Volver
+  </a>
+
+  <div class="page-header">
+    <div>
+      <h1>
+        {{ placa }}
+      </h1>
+      <span class="status" *ngIf="vehiculo">
+        {{ vehiculo.tipo }}
+      </span>
+      <p class="muted">Detalle de estancias y pagos acumulados.</p>
+    </div>
+  </div>
+
+  <div class="card resident" *ngIf="pago">
+    <div>
+      <span class="muted"> Minutos acumulados </span>
+      <strong>
+        {{ pago.minutosAcumulados }}
+      </strong>
+    </div>
+    <div>
+      <span class="muted"> Tarifa </span>
+      <strong> {{ pago.tarifaPorMinuto | currency: 'MXN' }}/min </strong>
+    </div>
+    <div>
+      <span class="muted"> Total mensual </span>
+      <strong>
+        {{ pago.total | currency: 'MXN' }}
+      </strong>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 18px">
+    <h2>Estancias</h2>
+    <div class="table-wrap">
+      <table mat-table [dataSource]="estancias">
+        <ng-container matColumnDef="entrada">
+          <th mat-header-cell *matHeaderCellDef>Entrada</th>
+          <td mat-cell *matCellDef="let e">
+            {{ e.fechaHoraEntrada | date: 'medium' }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="salida">
+          <th mat-header-cell *matHeaderCellDef>Salida</th>
+          <td mat-cell *matCellDef="let e">
+            {{ e.fechaHoraSalida ? (e.fechaHoraSalida | date: 'medium') : 'En curso' }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="minutos">
+          <th mat-header-cell *matHeaderCellDef>Minutos</th>
+          <td mat-cell *matCellDef="let e">
+            {{ e.minutos ?? '—' }}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="cols"></tr>
+        <tr mat-row *matRowDef="let row; columns: cols"></tr>
+      </table>
+      <div class="empty" *ngIf="!estancias.length">Sin estancias registradas.</div>
+    </div>
+  </div>
+
+</section>
